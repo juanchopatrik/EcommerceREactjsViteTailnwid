@@ -5,33 +5,21 @@ import ProductDetail from '../../Components/ProductDetail'
 import { ShoppingCartContext } from '../../Context'
 
 function Home() {
-
   const context = useContext(ShoppingCartContext)
 
   const renderView = () => {
-    if (context.setSearchByTitle?.length > 0) {
-      if (context.filteredItems?.length > 0) {
-        return (
-          context.filteredItems?.map(item => (
-            <Card key={item.id} data={item} />
-          ))
-        )
-      } else {
-        return (
-          <div>
-            We don't have products with that name :(
-          </div>
-        )
-      }
-    } else {
+    if (context.filteredItems?.length > 0) {
       return (
-        context.items?.map(item => (
+        context.filteredItems?.map(item => (
           <Card key={item.id} data={item} />
         ))
       )
+    } else {
+      return (
+        <div>We don't have anything :(</div>
+      )
     }
   }
-
 
   return (
     <Layout>
@@ -42,6 +30,7 @@ function Home() {
         type="text"
         placeholder='Search a product'
         className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none'
+        value={''}
         onChange={(event) => context.setSearchByTitle(event.target.value)} />
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
         {renderView()}
