@@ -15,13 +15,11 @@ const Card = (data) => {
     context.setCount(context.count + 1)
     context.setCartProducts([...context.cartProducts, productData])
     context.openCheckoutSideMenu()
-    console.log('Cart: ', context.cartProducts)
   }
 
   const renderIcon = (id) => {
     const isInCart = context.cartProducts.filter(product => product.id === id).length > 0
 
-    console.log('id: ', id)
     if (isInCart) {
       return (
         <div
