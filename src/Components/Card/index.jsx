@@ -4,7 +4,7 @@ import { ShoppingCartContext } from '../../Context'
 
 const Card = (data) => {
   const context = useContext(ShoppingCartContext)
-  console.log(data)
+
   const showProduct = (productDetail) => {
     context.openProductDetail()
     context.setProductToShow(productDetail)
@@ -24,7 +24,7 @@ const Card = (data) => {
     if (isInCart) {
       return (
         <div
-          className='absolute top-0 right-0 flex justify-center items-center bg-green w-6 h-6 rounded-full m-2 p-1'>
+          className='absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'>
           <CheckIcon className='h-6 w-6 text-white'></CheckIcon>
         </div>
       )
